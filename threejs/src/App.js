@@ -1,24 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import LandingPage from './landingpage';
+import { Routes, Route } from "react-router-dom";
+import VisualizationPage from './VisualizationPage';
+import AudioVisualizer from './threejsui';
+import AudioVisualizerOne from './threejsui1';
+import AudioVisualizerTwo from './threejsui2';
+import AudioVisualizerThree from './threejsui3';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage/>}/>
+      <Route path="/visualization" element={<VisualizationPage/>}/>
+      <Route path="/visualizer/waveform" element={<AudioVisualizer/>}/>
+      <Route path="/visualizer/spectrum" element={<AudioVisualizerOne/>}/>
+      <Route path="/visualizer/particles" element={<AudioVisualizerTwo/>}/>
+      <Route path="/visualizer/geometric" element={<AudioVisualizerThree/>}/>
+
+    </Routes>
   );
 }
 

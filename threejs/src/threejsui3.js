@@ -49,7 +49,7 @@ const VisualizerBars = ({ audioData }) => {
   );
 };
 
-const AudioVisualizer = () => {
+const AudioVisualizerThree = () => {
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioData, setAudioData] = useState(null);
@@ -101,4 +101,4 @@ const AudioVisualizer = () => {
   );
 };
 
-export default AudioVisualizer;
+export default AudioVisualizerThree;
