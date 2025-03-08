@@ -3,7 +3,6 @@ body {
   font-family: "Arial", sans-serif;
   background: linear-gradient(to bottom, #000, #1a1a1a, #000);
   color: white;
-  /* overflow: hidden; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +25,7 @@ body {
   display: flex;
   gap: 15px;
   align-items: center;
-  flex-wrap: wrap; /* Ensures responsiveness */
+  flex-wrap: wrap;
   padding: 10px;
   z-index: 10;
 }
@@ -57,7 +56,7 @@ body {
 }
 
 .file-input {
-  display: none; /* Hide default file input */
+  display: none;
 }
 
 .notes-display {
@@ -65,7 +64,7 @@ body {
   top: 80px;
   left: 20px;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(238, 234, 234, 0.7);
   padding: 12px;
   border-radius: 5px;
   backdrop-filter: blur(5px);
@@ -87,25 +86,126 @@ body {
 
 .note {
   padding: 5px 10px;
-  background: rgba(77, 184, 255, 0.2);
+  background: rgba(223, 225, 227, 0.2);
   border-radius: 3px;
   font-size: 14px;
   color: #4db8ff;
 }
 
+.canvas-container {
+  margin-bottom: 20px;
+}
+
+/* Piano styling */
+.piano-container {
+  width: 80vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: auto;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+  margin-top: 20px;
+}
+
+.piano {
+  display: flex;
+  position: relative;
+  height: 150px;
+}
+
+.octave {
+  display: flex;
+  position: relative;
+  width: 14em;
+}
+
+.piano-key {
+  position: relative;
+  border-radius: 0 0 4px 4px;
+  transition: background-color 0.1s;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.white {
+  width: 2em;
+  height: 150px;
+  background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+  border: 1px solid #bbb;
+  z-index: 1;
+}
+
+.black {
+  position: absolute;
+  width: 1.3em;
+  height: 90px;
+  background: linear-gradient(to bottom, #000, #222);
+  border: 1px solid #000;
+  z-index: 2;
+  transform: translateX(-0.65em);
+}
+
+.note-label {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  font-size: 10px;
+  color: #666;
+}
+
+.black .note-label {
+  color: #ccc;
+  bottom: 8px;
+}
+
+.piano-key.active {
+  background: linear-gradient(to bottom, #4db8ff, #3399ff);
+  box-shadow: 0 0 20px rgba(77, 184, 255, 0.8);
+}
+
+.piano-key.black.active {
+  background: linear-gradient(to bottom, #3399ff, #1a7ddb);
+  box-shadow: 0 0 15px rgba(77, 184, 255, 0.8);
+}
+
 /* Media Queries for Mobile Optimization */
 @media (max-width: 768px) {
   .controls {
-      flex-direction: column;
-      align-items: center;
-      top: 10px;
-      gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    top: 10px;
+    gap: 10px;
   }
   
   .notes-display {
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+  }
+  
+  .piano-container {
+    width: 95vw;
+    padding: 10px 5px;
+  }
+  
+  .piano {
+    height: 120px;
+  }
+  
+  .white {
+    height: 120px;
+  }
+  
+  .black {
+    height: 70px;
+  }
+  
+  .octave {
+    width: 12em;
   }
 }
