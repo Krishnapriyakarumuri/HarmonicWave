@@ -1,108 +1,313 @@
-
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, black, #1a1a1a, black);
-    color: white;
-  }
-  
-  .landing-container {
-    padding: 5px;
-  }
-  
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(to bottom, #000, #1a1a1a, #000);
+  color: white;
+  overflow: hidden; /* Prevent scrollbars */
+}
 
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    border-bottom: 1px solid gray;
+/* Full-page container */
+.landing-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Floating music notes background */
+.music-notes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.music-note {
+  position: absolute;
+  color: rgba(77, 184, 255, 0.8);
+  animation: floatNote 5s infinite ease-in-out;
+}
+
+@keyframes floatNote {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
   }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #4db8ff;
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
   }
-  
-  .nav-links a {
-    margin-left: 15px;
-    color: white;
-    text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  z-index: 10;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #4db8ff;
+  text-shadow: 0 0 10px #4db8ff, 0 0 20px #4db8ff; /* Glow effect */
+}
+
+.nav-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #4db8ff;
+  text-shadow: 0 0 10px #4db8ff; /* Glow effect on hover */
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  margin-top: 20px;
+  z-index: 1;
+}
+
+.hero h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #4db8ff;
+  text-shadow: 0 0 10px #4db8ff; /* Glow effect */
+}
+
+.hero p {
+  font-size: 18px;
+  color: #ccc;
+}
+
+.upload-section {
+  margin-top: 30px;
+}
+
+
+
+
+#audioInput {
+  display: none;
+}
+
+/* Content section */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 50px;
+  padding: 0 20px;
+  z-index: 1;
+}
+
+/* Card UI with sizzling effects */
+.text-section {
+  background: rgba(50, 50, 50, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 40%;
+  backdrop-filter: blur(5px); /* Frosted glass effect */
+  border: 1px solid rgba(77, 184, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text-section:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(77, 184, 255, 0.5); /* Lift and glow effect */
+}
+
+.text-section h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.text-section p {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.visualizer {
+  width: 40%;
+  text-align: center;
+}
+
+.audio-player {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.visualizer-img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(77, 184, 255, 0.5);
+  animation: glow 2s infinite alternate; /* Glow animation */
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 15px rgba(77, 184, 255, 0.5);
   }
-  
-  .nav-links a:hover {
-    color: #4db8ff;
+  100% {
+    box-shadow: 0 0 30px rgba(77, 184, 255, 0.8);
   }
-  
-  .hero {
-    text-align: center;
-    margin-top: 40px;
+}
+
+.placeholder-text {
+  color: #888;
+  font-size: 16px;
+}
+
+/* Upload Button */
+.upload-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #4db8ff, #3399ff); /* Gradient background */
+  color: black; /* Text color changed to black */
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+  z-index: 0;
+}
+
+.upload-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(77, 184, 255, 0.8); /* Glow effect */
+}
+
+.upload-btn:hover::before {
+  transform: translate(-50%, -50%) scale(1); /* Ripple effect */
+}
+
+.upload-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Visualize Button */
+.visualize-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #4db8ff, #3399ff); /* Gradient background */
+  color: black; /* Text color changed to black */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.visualize-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+  z-index: 0;
+}
+
+.visualize-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(77, 184, 255, 0.8); /* Glow effect */
+}
+
+.visualize-btn:hover::before {
+  transform: translate(-50%, -50%) scale(1); /* Ripple effect */
+}
+
+.visualize-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Border Animation for Buttons */
+.upload-btn, .visualize-btn {
+  border: 2px solid transparent;
+  background-clip: padding-box; /* Ensure gradient doesn't cover the border */
+}
+
+.upload-btn::after, .visualize-btn::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #4db8ff, #3399ff);
+  border-radius: 5px;
+  z-index: -1;
+  animation: rotateBorder 3s linear infinite;
+}
+
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .hero h2 {
-    font-size: 32px;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  .highlight {
-    color: #4db8ff;
+}
+
+/* Additional professional touches */
+.landing-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(77, 184, 255, 0.1), transparent 70%);
+  animation: pulseBackground 5s infinite alternate;
+  z-index: -1;
+}
+
+@keyframes pulseBackground {
+  0% {
+    opacity: 0.1;
   }
-  
-  .upload-section {
-    margin-top: 20px;
+  100% {
+    opacity: 0.3;
   }
-  
-  .upload-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4db8ff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .upload-btn:hover {
-    background-color: #3399ff;
-  }
-  
-  #audioInput {
-    display: none;
-  }
-  
-  .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    gap: 30px;
-    padding: 0 20px;
-  }
-  
-  .text-section {
-    background-color: rgba(50, 50, 50, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    width: 45%;
-  }
-  
-  .visualizer {
-    width: 45%;
-    text-align: center;
-  }
-  
-  .audio-player {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .visualizer-img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
-  }
-  
-  .placeholder-text {
-    color: gray;
-    font-size: 14px;
-  }
-  
+}

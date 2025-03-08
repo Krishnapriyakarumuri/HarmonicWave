@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import "./AudioViualizer.css";
+import "./AudioVisualizerOne.css"; // Make sure the CSS file is correctly named
 
 const VisualizerBars = ({ audioData }) => {
   const barsRef = useRef([]);
@@ -75,11 +75,22 @@ const AudioVisualizerOne = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", color: "white", position: "relative" }}>
-      <input type="file" accept="audio/*" onChange={handleFileUpload} />
-      <button onClick={togglePlayPause} disabled={!audio}>
-        {isPlaying ? "Pause" : "Play"}
-      </button>
+    <div className="visualizer-container">
+      <div className="controls">
+        <label htmlFor="file-input" className="file-input-label">
+          Choose File
+          <input
+            type="file"
+            id="file-input"
+            accept="audio/*"
+            onChange={handleFileUpload}
+            className="file-input"
+          />
+        </label>
+        <button onClick={togglePlayPause} disabled={!audio} className="play-button">
+          {isPlaying ? "⏸️ Pause" : "▶️ Play"}
+        </button>
+      </div>
 
       <Canvas camera={{ position: [0, 0, 12] }} style={{ height: "80vh", width: "80vw" }}>
         <ambientLight intensity={1.5} />

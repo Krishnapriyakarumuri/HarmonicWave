@@ -13,10 +13,10 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage/>}/>
       <Route path="/visualization" element={<VisualizationPage/>}/>
-      <Route path="/visualizer/waveform" element={<AudioVisualizer/>}/>
-      <Route path="/visualizer/spectrum" element={<AudioVisualizerOne/>}/>
-      <Route path="/visualizer/particles" element={<AudioVisualizerTwo/>}/>
-      <Route path="/visualizer/geometric" element={<AudioVisualizerThree/>}/>
+      <Route path="/visualizer/waveform" element={<AudioVisualizerOne/>}/>
+      <Route path="/visualizer/spectrum" element={<AudioVisualizerTwo/>}/>
+      <Route path="/visualizer/particles" element={<AudioVisualizerThree/>}/>
+      <Route path="/visualizer/geometric" element={<AudioVisualizer/>}/>
 
     </Routes>
   );
